@@ -7,20 +7,18 @@
 </head>
 <body>
     <h1>Bienvenido a Audio Hosting</h1>
-    <p>Tu audio debería empezar a reproducirse automáticamente.</p>
+    <p>Haz clic en cualquier parte para reproducir el audio.</p>
 
-    <audio id="audio" autoplay muted>
-    <source src="audio.mp3" type="audio/mpeg">
-    Tu navegador no soporta la reproducción de audio.
-</audio>
+    <audio id="miAudio">
+        <source src="audio.mp3" type="audio/mpeg">
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
 
-<script>
-    window.onload = function() {
-        let audio = document.getElementById("audio");
-        audio.muted = false; // Desmutear el audio después de cargar
-        audio.play().catch(error => console.log("Autoplay bloqueado nuevamente"));
-    };
-</script>
+    <script>
+        document.addEventListener("click", function() {
+            let audio = document.getElementById("miAudio");
+            audio.play().catch(error => console.log("Reproducción bloqueada:", error));
+        }, { once: true }); // Solo permite el clic una vez
+    </script>
 </body>
 </html>
-
